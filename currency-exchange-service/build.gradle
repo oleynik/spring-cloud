@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'ua.infinity.courses.springmicroservices'
-version = '0.0.1-SNAPSHOT'
+version = '0.1.1-SNAPSHOT'
 sourceCompatibility = '14'
 
 repositories {
@@ -24,11 +24,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'io.github.resilience4j:resilience4j-spring-boot2'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
-	implementation 'org.springframework.amqp:spring-rabbit'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+//	implementation 'org.springframework.amqp:spring-rabbit'
+//	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.h2database:h2'
 
@@ -48,6 +48,6 @@ test {
 }
 
 docker {
-	name "${project.name}:${project.version}"
+	name "alexanderoleynik/${project.name}:${project.version}"
 	files "build/libs/${project.name}-${project.version}.jar"
 }

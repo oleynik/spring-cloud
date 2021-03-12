@@ -28,7 +28,10 @@ public class CurrencyExchangeController {
         if (currencyExchange == null) {
             throw new RuntimeException("Unable to find data for " + from + " to " + to);
         }
-        currencyExchange.setEnvironment(environment.getProperty("local.server.port"));
+        String host = environment.getProperty("HOSTNAME");
+        String version = "v0.1.1-SNAPSHOT";
+        String port = environment.getProperty("local.server.port");
+        currencyExchange.setEnvironment(host + ":" + port + " / " + version);
         return currencyExchange;
     }
 }

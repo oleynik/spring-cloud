@@ -1,5 +1,7 @@
 package ua.infinity.courses.springmicroservices.currencyconversionservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,8 @@ import java.util.Map;
 @RestController
 public class CurrencyConversionController {
 
+    private static final Logger logger = LoggerFactory.getLogger(CurrencyConversionController.class);
+
     @Autowired
     private CurrencyExchangeProxy currencyExchangeProxy;
 
@@ -20,6 +24,7 @@ public class CurrencyConversionController {
     public CurrencyConversion convert(@PathVariable String from,
                                       @PathVariable String to,
                                       @PathVariable BigDecimal quantity) {
+        logger.info("convert called with {} to {} with ", from, to, quantity);
         Map<String, String> urlVars = new HashMap<>();
         urlVars.put("from", from);
         urlVars.put("to", to);
@@ -40,6 +45,7 @@ public class CurrencyConversionController {
     public CurrencyConversion convertFeign(@PathVariable String from,
                                       @PathVariable String to,
                                       @PathVariable BigDecimal quantity) {
+        logger.info("convert called with {} to {} with ", from, to, quantity);
         CurrencyConversion currencyConversion = currencyExchangeProxy.exchange(from, to);
 
         BigDecimal conversionMultiple = currencyConversion.getConversionMultiple();
