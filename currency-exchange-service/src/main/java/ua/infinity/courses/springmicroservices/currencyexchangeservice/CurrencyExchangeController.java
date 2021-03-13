@@ -29,7 +29,7 @@ public class CurrencyExchangeController {
             throw new RuntimeException("Unable to find data for " + from + " to " + to);
         }
         String host = environment.getProperty("HOSTNAME");
-        String version = "v0.1.1-SNAPSHOT";
+        String version = "v0.1.3-SNAPSHOT";
         String port = environment.getProperty("local.server.port");
         currencyExchange.setEnvironment(host + ":" + port + " / " + version);
         return currencyExchange;
